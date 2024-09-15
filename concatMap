@@ -1,0 +1,2 @@
+// concatMap is an operator that projects each value from the source Observable into a new Observable and subscribes to them in sequence, waiting for each one to complete before moving on to the next.
+
