@@ -1,2 +1,73 @@
 Subject: Does not have an initial value. Does not store the values it emits
 BehaviorSubject: Requires an initial value at the time of creation. Stores the most recent value and emits it to any new subscribers
+
+
+import { Component, OnInit, inject } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { ReplaySubject } from 'rxjs';
+import { concatMap, mergeMap, switchMap} from 'rxjs/operators'
+import { of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: [ './app.component.css' ]
+})
+export class AppComponent implements OnInit {
+  name = 'Angular 5';
+source = new Subject()
+
+ngOnInit(){
+  // Subscriber 1 subscribes
+this.source.subscribe(value => console.log('Subscriber 1 received: ' + value));
+
+// Emit values
+this.source.next(1);
+this.source.next(2);
+
+// Subscriber 2 subscribes after some values have been emitted
+this.source.subscribe(value => console.log('Subscriber 2 received: ' + value));
+
+// Emit another value
+this.source.next(3);
+}
+
+}
+
+
+
+import { Component, OnInit, inject } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { ReplaySubject } from 'rxjs';
+import { concatMap, mergeMap, switchMap} from 'rxjs/operators'
+import { of, BehaviorSubject} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: [ './app.component.css' ]
+})
+export class AppComponent implements OnInit {
+  name = 'Angular 5';
+source = new BehaviorSubject(0)
+
+ngOnInit(){
+  // Subscriber 1 subscribes
+this.source.subscribe(value => console.log('Subscriber 1 received: ' + value));
+
+// Emit values
+this.source.next(1);
+this.source.next(2);
+
+// Subscriber 2 subscribes after some values have been emitted
+this.source.subscribe(value => console.log('Subscriber 2 received: ' + value));
+
+// Emit another value
+this.source.next(3);
+}
+
+}
