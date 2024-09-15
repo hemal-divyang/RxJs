@@ -1,0 +1,29 @@
+// ReplaySubject replays the last N values to new subscribers
+
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { ReplaySubject } from 'rxjs';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: [ './app.component.css' ]
+})
+export class AppComponent implements OnInit {
+  name = 'Angular 5';
+
+  
+replaySubject = new ReplaySubject(1)
+
+ngOnInit(){
+
+  this.replaySubject.subscribe((res)=>{
+    console.log(res)
+  });
+this.replaySubject.next(1)
+this.replaySubject.next(2)
+this.replaySubject.next(3)
+}
+
+}
