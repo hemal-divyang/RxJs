@@ -1,0 +1,2 @@
+Subject: Does not have an initial value. Does not store the values it emits
+BehaviorSubject: Requires an initial value at the time of creation. Stores the most recent value and emits it to any new subscribers
