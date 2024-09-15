@@ -1,6 +1,6 @@
 // https://www.youtube.com/watch?v=Dk2uT4bJpAU&t=55s
-// mergeMap: give response but not in sequnce
-// concatMap: give response in sequnce
+// mergeMap: give response but not in sequence
+// concatMap: give response in sequence
 // switchMap: give latest response
 
 import { HttpClient } from '@angular/common/http';
